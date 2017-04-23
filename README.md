@@ -1,5 +1,4 @@
-# Application of Machine Learning Methodologies
-# to Multiyear Forecasts of Video Subscribers
+# Application of Machine Learning Methodologies to Multiyear Forecasts of Video Subscribers
 
 Author Information
 -----------
