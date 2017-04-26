@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 12 15:33:55 2017
+
+@author: kaleyhanrahan
+"""
+
 import os
 import numpy as np
 import pandas as pd
@@ -16,7 +23,8 @@ import seaborn as sns                                # visualizations
 sns.set(style="darkgrid", color_codes=True)          # viz style
 import matplotlib.patches as mpatches                # plot legend
 
-
+import random
+random.seed(7)
 
 #######################
 ### Read in and Clean Data
@@ -61,7 +69,8 @@ hsd_save = master['High Speed Data Subscribers'].values
 
 # Subset features of interest
 j = master.columns.isin(['forecastYear','forecastSubs','year',
-                         'deltaHSD', 'deltaMultiChannel', 'deltaBasicCable', 'HSDpenetration'])
+                         'deltaHSD', 'deltaMultiChannel', 
+                         'deltaBasicCable', 'HSDpenetration'])
                          
 master = master.ix[:,j]
 
@@ -125,12 +134,13 @@ print(sorted(zip(map(lambda x: round(x, 4), rfecv.ranking_), var_names)))
 # deltaMultiChannel  1
 # year  1
 # forecastYear  2
-
+    
     
 ####### Variable Importance #######
 
 # fit an Extra Trees model to the data
-feat_importance = ExtraTreesClassifier()
+feat_importance = ExtraTreesClassifier(n_estimators=300,
+                              random_state=9)
 feat_importance.fit(X_full, Y_full)
 
 varImportances = pd.DataFrame(data = {'Feature':var_names, 'Importance':feat_importance.feature_importances_}, 
@@ -140,12 +150,12 @@ varImportances.sort_values(['Importance'], inplace=True, ascending=False)
 
 print(varImportances)
 #             Feature  Importance
-#1       forecastYear    0.216667
-#3  deltaMultiChannel    0.183333
-#5     HSDpenetration    0.175000
-#2           deltaHSD    0.166667
-#0               year    0.166667
-#4    deltaBasicCable    0.091667
+#0               year    0.173889
+#5     HSDpenetration    0.170000
+#1       forecastYear    0.166667
+#4    deltaBasicCable    0.166389
+#2           deltaHSD    0.165000
+#3  deltaMultiChannel    0.158056
 
 #########################
 
