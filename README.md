@@ -1,7 +1,7 @@
 # Application of Machine Learning Methodologies to Multiyear Forecasts of Video Subscribers
 
 Author Information
------------------
+------------------
 Jordan Baker, Andrew Pomykalski, Kaley Hanrahan, and Gianluca Guadagni
 
 Project Description
