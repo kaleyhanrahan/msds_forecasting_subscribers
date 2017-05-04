@@ -10,3 +10,5 @@ The Market Intelligence division of S&P Global provides annual multiyear forecas
 
 Link to SIEDS paper:
 https://edas.info/showManuscript.php?m=1570341302&ext=pdf&random=858142030&type=final
+
+Awarded Best Poster in Data Science
